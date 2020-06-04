@@ -1,0 +1,24 @@
+body {
+    background: var(--white-color);
+    font-family: 'Inconsolata', monospace;
+
+  }
+
+  h1,h2,h3,h4,h5,h6,p {
+    font-family: 'Inconsolata', monospace;
+  }
+
+
+.navItem{
+	
+    font-family: 'Inconsolata', monospace;
+  font-size: 20px;
+  letter-spacing: 2px;
+
+}
+
+
+.navItem a:hover {
+    background-color:  #b2c5e7;
+  
+  }
