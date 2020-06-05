@@ -1,0 +1,24 @@
+<%- include('./includes/head.ejs') %>
+<body>
+
+    <%- include('./includes/navigation.ejs') %>
+
+    <section class="feature">
+        <div class="container form1">
+            <div class="row">
+
+                <form action="/admin/add-product" method="POST">
+                    <div class="form-group">
+                        <h3><label>Add Products </label></h3>
+                        <input type="text" class="form-control" name="item" placeholder="Enter product">
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+   
+<%- include('./includes/end.ejs') %>
