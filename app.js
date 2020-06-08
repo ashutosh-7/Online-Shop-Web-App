@@ -23,4 +23,5 @@ app.use(errorControllers.get404);
 
 
 app.listen(3000);  //start server
-
+// process.exit();
+// sudo lsof -i :3000 the kill -9 {pid}
