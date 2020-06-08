@@ -15,9 +15,12 @@ const rootDir = require('../util/path.js');
 
 module.exports = class Product{
 
-    constructor(title_name)
+    constructor(title,imageUrl,description,price)
     {
-        this.title= title_name;
+        this.title= title;
+        this.imageUrl=imageUrl;
+        this.description=description;
+        this.price=price;
     }
 
     save(){

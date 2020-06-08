@@ -24,14 +24,16 @@
                     <h1 class="product__title"><b><%= x.title %></b></h1>
                 </header>
                 <div class="card__image">
-                    <img src="https://userpic.codeforces.com/937549/title/931c2db7b2b5c529.jpg" alt="A Book">
+                    <img src="<%= x.imageUrl %>" alt="<%= x.title %>">
                 </div>
                 <div class="card__content">
-                    <h2 class="product__price">$19.99</h2>
-                    <p class="product__description">A very interesting book about so many even more interesting things!</p>
+                    <h2 class="product__price"><b>$<%= x.price %></b></h2>
+                    <p class="product__description">!<%= x.description %></p>
                 </div>
                 <div class="card__actions">
-                    <button class="btn">Add to Cart</button>
+                    <form action="admin/addToCart" method="POST">
+                        <button class="btn">Add to Cart</button>
+                        </form>
                 </div>
             </article>
            
