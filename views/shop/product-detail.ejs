@@ -14,9 +14,7 @@
     <p class="centered"><%= product.description %></p>
     <div class="card__actions">
        
-        <form action="admin/addToCart" method="POST">
-            <button class="btn">Add to Cart</button>
-            </form>
+        <%- include('../includes/addToCart.ejs',{product:product.id}) %>
     </div>
 
 <%- include('../includes/end.ejs') %>
