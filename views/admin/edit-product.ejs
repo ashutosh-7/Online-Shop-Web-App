@@ -1,5 +1,36 @@
 <%- include('../includes/head.ejs') %>
 <body>
-<%- include('../includes/navigation.ejs') %>
 
+    <%- include('../includes/navigation.ejs') %>
+
+    <section class="feature">
+        <div class="container form1">
+            <div class="row">
+
+                <form action="/admin/<% if(editing) { %>edit-product<% } else { %>add-product <% } %>" method="POST">
+                    <div class="form-group">
+                        <h3><label><% if(editing) { %>Edit Product <% } else { %>  Add Product <% } %></label></h3>
+                        <input type="text" class="form-control" name="title" placeholder="Product Name" value="<% if(editing) { %><%= product.title %> <% } %>">
+                    </div>
+                    <div class="form-group">
+                        <h3><label>Image Url </label></h3>
+                        <input type="text" class="form-control" name="imageUrl" placeholder="Image Url" value="<% if(editing) { %><%= product.imageUrl %> <% } %>">
+                    </div>
+                    <div class="form-group">
+                        <h3><label> Price </label></h3>
+                        <input type="text" class="form-control" name="price" placeholder="Enter price" value="<% if(editing) { %><%= product.price %> <% } %>">
+                    </div>
+                    <div class="form-group">
+                        <h3><label>Description </label></h3>
+                        <textarea class="form-control" type="number" step="0.01" name="description" id="description" rows="4" placeholder="Description"><% if(editing) { %><%= product.description %> <% } %></textarea>
+                    </div>
+                    <% if(editing) { %><input type="hidden"  name="productId"value="<%= product.id %>"  > <% } %>
+
+                    <button type="submit" class="btn btn-primary"><% if(editing) { %>Edit Product <% } else { %>  Add Product <% } %></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+   
 <%- include('../includes/end.ejs') %>
