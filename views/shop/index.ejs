@@ -31,6 +31,7 @@
                     <p class="product__description">!<%= x.description %></p>
                 </div>
                 <div class="card__actions">
+                    <a href="/products/<%= x.id %>" class="btn" >Product Details</a>
                     <form action="admin/addToCart" method="POST">
                         <button class="btn">Add to Cart</button>
                         </form>

@@ -2,4 +2,21 @@
 <body>
 <%- include('../includes/navigation.ejs') %>
 
+<main class="centered">
+    <h1><%= product.title %></h1>
+</main>
+
+    <hr>
+    <div class="centered">
+        <img class="centere" src="<%= product.imageUrl %>" alt="<%= product.title %>">
+    </div>
+    <b><h3 class="centered">$  <%= product.price %></h2></b>
+    <p class="centered"><%= product.description %></p>
+    <div class="card__actions">
+       
+        <form action="admin/addToCart" method="POST">
+            <button class="btn">Add to Cart</button>
+            </form>
+    </div>
+
 <%- include('../includes/end.ejs') %>

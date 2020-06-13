@@ -24,6 +24,9 @@ module.exports = class Product{
     }
 
     save(){
+        this.id = Math.random().toString;
+
+
         const p = path.join(rootDir,'data','products.json');
         getFileProducts((products) => {
             products.push(this);
@@ -37,5 +40,13 @@ module.exports = class Product{
     static fetchAll(call_Back){
         getFileProducts(call_Back);
     }
+
+    static findById(id, cb)
+        {
+            getFileProducts(products => {
+                const product = products.find(p => p.id===id)
+                cb(product);
+            });
+        }
 }
 
