@@ -12,11 +12,25 @@ const app = express();  //making app as express object
 app.set('view engine','ejs');  //express ko batata hai hum by deafult kaun sa templating engine use kar rahe
 app.set('views','views');  // ye path batata hai kaha pe hai wo files sab
 
+const db = require('./util/database');
+
+db.execute('SELECT * FROM products')
+.then(result=> {
+    console.log(result[0]);
+})
+.catch(err=>{
+    console.log(err);
+});
+
+
+
 app.use(bodyParser.urlencoded({extended : false})); //parse form bodies
 app.use(express.static(path.join(rootDir,'public'))); //including public folder accesseible
 
 app.use('/admin',adminRoutes.routes);  // '/admin' is a filter which we use in url
 app.use(shopRoutes);
+
+
 
 app.use(errorControllers.get404);
 
