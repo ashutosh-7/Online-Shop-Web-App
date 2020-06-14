@@ -13,7 +13,7 @@ exports.postAddProducts = (req,res,next) => {
     const description = req.body.description;
     const price = req.body.price;
     const imageUrl = req.body.imageUrl;
-    Product.create({
+    req.user.createProduct({
         title:title,  //model_attribute: variable stored values
         price:price,
         description:description,
@@ -35,8 +35,10 @@ exports.getEditProduct = (req,res,next) => {
         return res.redirect('/');
     }
     const id = req.params.productId;
-    Product.findByPk(id)
+    req.user
+    .getProducts({where : {id : id} })
     .then(product => {
+        const product1= product[0];
         if(!product)
         {
             return res.redirect('/');
@@ -44,7 +46,7 @@ exports.getEditProduct = (req,res,next) => {
             res.render('admin/edit-product',{
             pageTitle:'Edit Product',
             editing : editMode,
-            product:product
+            product:product1
     
         });
     })
@@ -80,7 +82,7 @@ exports.postEditProduct = (req,res,next) => {
 
 
 exports.getProducts = (req,res,next) => {
-        Product.findAll()
+       req.user.getProducts()
         .then(products => {
                 res.render('admin/products',{
                 product:products,
