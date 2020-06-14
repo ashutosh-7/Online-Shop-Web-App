@@ -12,8 +12,7 @@ const app = express();  //making app as express object
 app.set('view engine','ejs');  //express ko batata hai hum by deafult kaun sa templating engine use kar rahe
 app.set('views','views');  // ye path batata hai kaha pe hai wo files sab
 
-const db = require('./util/database');
-
+const sequelize = require('./util/database');
 
 app.use(bodyParser.urlencoded({extended : false})); //parse form bodies
 app.use(express.static(path.join(rootDir,'public'))); //including public folder accesseible
@@ -27,6 +26,13 @@ app.use(errorControllers.get404);
 
 
 
-app.listen(3000);  //start server
+sequelize
+.sync()
+.then(result => {
+    app.listen(3000);  //start server
+
+})
+.catch(err => console.log(err) );
+
 // process.exit();
 // sudo lsof -i :3000 the kill -9 {pid}
