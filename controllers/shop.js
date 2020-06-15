@@ -1,5 +1,6 @@
 const Product = require('../models/product');
 const Cart = require('../models/cart');
+const Order = require('../models/order');
 
 
 
@@ -95,7 +96,9 @@ exports.postCart = (req,res,next) => {
        })
        .catch(err =>console.log(err));
    })
-   .then(res.redirect('/cart'))
+   .then(result=> {
+    res.redirect('/cart');
+   })
    .catch(err => console.log(err));
     // res.redirect('/cart');
 };
@@ -124,6 +127,31 @@ exports.getOrders = (req,res,next) => {
 });
 }
 
+exports.postOrder=(req,res,next)=> {
+
+    req.user
+    .getCart()
+    .then(cart=> {
+        return cart.getProducts();
+    })
+    .then(products=> {
+        return req.user.createOrder()
+        .then(order => {
+           return  order.addProducts(products.map(product=> {
+                product.orderItem={quantity:product.cartItem.quantity};
+                return product;
+            }));
+        })
+        .catch(err=> console.log(err));
+
+    })
+    .then(result => {
+        res.render('/order');
+    })
+    .catch(err => console.log(err));
+
+
+};
 
 
 

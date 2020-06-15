@@ -13,6 +13,7 @@ router.post('/delete-cart-item',shopController.postCartDeleteItem);
 router.get('/orders',shopController.getOrders);
 router.get('/checkout',shopController.getCheckout);
 router.get('/products',shopController.getProducts);
+router.get('/create-order',shopController.postOrder);
 
 router.get('/products/:productId',shopController.getProduct); //dynamic routtes uses controller
 
