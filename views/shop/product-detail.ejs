@@ -14,7 +14,7 @@
     <p class="centered"><%= product.description %></p>
     <div class="card__actions">
        
-        <%- include('../includes/addToCart.ejs',{product:product.id}) %>
+        <%- include('../includes/addToCart.ejs',{product:product._id}) %>
     </div>
 
 <%- include('../includes/end.ejs') %>

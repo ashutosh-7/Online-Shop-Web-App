@@ -31,10 +31,10 @@
                     <p class="product__description">!<%= x.description %></p>
                 </div>
                 <div class="card__actions">
-                    <a href="edit-product/<%= x.id %>?edit=true" ><button class="btn">Edit Product</button></a>
+                    <a href="edit-product/<%= x._id %>?edit=true" ><button class="btn">Edit Product</button></a>
                     <br>
                        <form action="/admin/delete-product" method="POST">
-                        <input type="hidden"  name="productId" value="<%= x.id %>"  >
+                        <input type="hidden"  name="productId" value="<%= x._id %>"  >
                      <button class="btn" type="submit">Delete Product</button>
                     </form>
                 </div>
