@@ -7,14 +7,37 @@ const bodyParser =require('body-parser');  //importing body-parser which takes i
 const errorControllers = require('./controllers/error');
 
 const adminRoutes= require('./routes/admin');  //for admin routes importing
+const authRoutes= require('./routes/auth');  //for admin routes importing
 const shopRoutes = require('./routes/shop'); //for importing shop routes which is for users panel
 
 const User= require('./models/user');
 
+const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
+
+
 const app = express();  //making app as express object
+
+const MONGODB_URI ='mongodb+srv://admin:1416root@cluster0-dftyh.mongodb.net/shop?retryWrites=true&w=majority';
+
+const store= new MongoDBStore({
+    uri:MONGODB_URI,
+    collection:'sessions',
+});
 
 app.set('view engine','ejs');  //express ko batata hai hum by deafult kaun sa templating engine use kar rahe
 app.set('views','views');  // ye path batata hai kaha pe hai wo files sab
+
+
+app.use(
+    session ({
+        secret: 'my secret',
+        resave:false,
+        saveUninitialized:false,
+        store:store
+    })
+);
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false})); //parse form bodies
@@ -33,8 +56,9 @@ app.use((req,res,next) => {
 });
 
 
-app.use('/admin',adminRoutes.routes);  
+app.use('/admin',adminRoutes);  
 app.use(shopRoutes);
+app.use(authRoutes);
 // app.use(errorControllers.get404);
 
 
@@ -42,7 +66,7 @@ app.use(shopRoutes);
 
 
 mongoose
-.connect('mongodb+srv://admin:1416root@cluster0-dftyh.mongodb.net/shop?retryWrites=true&w=majority')
+.connect(MONGODB_URI)
 .then(result => {
     User.findOne().then(user=> {
         if(!user)

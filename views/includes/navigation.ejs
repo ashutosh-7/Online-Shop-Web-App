@@ -12,6 +12,7 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end navItem " id="navbarToggle">
             <ul class="navbar-nav ml-lg-auto">
+                <% if(isAuthenticated) { %>
                 <li class="nav-item">
                     <a class="nav-link smoothScroll" style="color: rgb(255, 255, 255);" href="/">Shop</a>
                 </li>
@@ -24,12 +25,19 @@
                 <li class="nav-item">
                     <a class="nav-link smoothScroll" style="color: #fafeff;" href="/orders">Your Orders</a>
                 </li>
+             
                 <li class="nav-item">
                     <a class="nav-link smoothScroll" style="color: #fafeff;" href="/admin/add-product">Add Product</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link smoothScroll" style="color: #fafeff;" href="/admin/products">Admin Product</a>
                 </li>
+                <% } else {%>
+                <li class="nav-item">
+                    <a class="nav-link smoothScroll" style="color: #fafeff;" href="/login">Login</a>
+                </li> 
+                <% } %>
             </ul>
+           
         </div>
     </nav>

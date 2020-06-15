@@ -6,6 +6,7 @@ exports.getAddProducts = (req,res,next) => {
     
         res.render('admin/edit-product',{
         pageTitle:'Add Product',
+        isAuthenticated: req.isLoggedIn,
         editing:false
     });
 }
@@ -20,7 +21,8 @@ exports.postAddProducts = (req,res,next) => {
         description:description,
         price:price,
         imageUrl:imageUrl,
-        userId:req.user
+        userId:req.user,
+        isAuthenticated: req.isLoggedIn
     });
 
     product.save()
@@ -49,6 +51,7 @@ exports.getEditProduct = (req,res,next) => {
             res.render('admin/edit-product',{
             pageTitle:'Edit Product',
             editing : editMode,
+            isAuthenticated: req.isLoggedIn,
             product:product1
     
         });
@@ -90,6 +93,7 @@ exports.getProducts = (req,res,next) => {
                 res.render('admin/products',{
                 product:products,
                 pageTitle:'Admin Products',
+                isAuthenticated: req.isLoggedIn
               
             });
         })
