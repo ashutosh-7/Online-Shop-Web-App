@@ -20,12 +20,13 @@ app.use(bodyParser.urlencoded({extended : false})); //parse form bodies
 app.use(express.static(path.join(rootDir,'public'))); //including public folder accesseible
 
 app.use((req,res,next) => {
-    const x="5ee78e078dffe48a21802024";
+    const x="5ee7a26e8dffe48a21802025";
     User.findById(x)
     .then(user => {
-        req.user=user;
-        console.log("hey i am here");
-        console.log(req.user);
+        // req.user=user;
+        req.user=new User(user.name, user.email,user.cart,user._id);
+        // console.log("hey i am here");
+        // console.log(req.user);
         next();
     })
     .catch(err => {
