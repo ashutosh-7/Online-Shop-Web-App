@@ -9,9 +9,9 @@
             <% for(product of products) { %>
 
                 <li>
-                    <p><%= product.title %>  -   Quantity =  (<%= product.cartItem.quantity%> )</p>
+                    <p><%= product.productId.title %>  -   Quantity =  (<%= product.quantity%> )</p>
                     <form action="delete-cart-item" method="POST">
-                        <input type="hidden"  name="productId" value="<%= product._id %>"  >
+                        <input type="hidden"  name="productId" value="<%= product.productId._id %>"  >
                         <button type="submit" class="btn"> Delete </button>
                     </form>
                 </li>
