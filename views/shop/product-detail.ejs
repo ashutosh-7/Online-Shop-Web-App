@@ -13,8 +13,9 @@
     <b><h3 class="centered">$  <%= product.price %></h2></b>
     <p class="centered"><%= product.description %></p>
     <div class="card__actions">
-       
+       <% if(isAuthenticated) { %>
         <%- include('../includes/addToCart.ejs',{product:product._id}) %>
+    <% } %>
     </div>
 
 <%- include('../includes/end.ejs') %>
