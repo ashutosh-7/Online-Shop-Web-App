@@ -30,6 +30,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
     "express-session": "^1.17.1",
+    "express-validator": "^6.5.0",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.19",
     "mysql2": "^2.1.0",
