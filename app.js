@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const path = require ('path');
 const rootDir = require('./util/path.js');
 const csrf= require('csurf');
+const flash=require('connect-flash');
 
 const bodyParser =require('body-parser');  //importing body-parser which takes input stream from html forms
 const errorControllers = require('./controllers/error');
@@ -43,7 +44,7 @@ app.use(
 );
 
 app.use(csrfProtection);
-
+app.use(flash());
 
 
 app.use((req, res, next) => {

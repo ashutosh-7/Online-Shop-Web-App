@@ -4,6 +4,11 @@
    <%- include('../includes/navigation.ejs') %>
 
     <main class="centered">
+        <div class="user-message user-message--error">
+        <% if(errorMessage) { %>
+            <%= errorMessage %>
+            <% } %>
+        </div>
         <form class="login-form" action="/signup" method="POST">
             <div class="">
                 <label for="email">E-Mail</label>

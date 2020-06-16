@@ -88,3 +88,11 @@ body {
 .centered {
   text-align: center;
 }
+
+.user-message{
+  margin:auto;
+  width:90%;
+  border:1px solid rgb(152, 172, 226);
+  background: rgb(151, 224, 224);
+  border-radius: 3px;
+}
