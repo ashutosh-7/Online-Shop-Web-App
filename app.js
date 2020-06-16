@@ -43,23 +43,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false})); //parse form bodies
 app.use(express.static(path.join(rootDir,'public'))); //including public folder accesseible
 
-app.use((req,res,next) => {
-    const x="5ee7be260f77b1b934b27ca1";
-    User.findById(x)
-    .then(user => {
-        req.user=user;
-        next();
-    })
-    .catch(err => {
-        console.log(err)});
-        
-});
 
 
 app.use('/admin',adminRoutes);  
 app.use(shopRoutes);
 app.use(authRoutes);
-// app.use(errorControllers.get404);
+app.use(errorControllers.get404);
 
 
 
@@ -68,20 +57,6 @@ app.use(authRoutes);
 mongoose
 .connect(MONGODB_URI)
 .then(result => {
-    User.findOne().then(user=> {
-        if(!user)
-        {
-            const user = new User({
-                name:"Ashu",
-                email:"erashu.yadaw@gmail.com",
-                cart: {
-                    items:[]
-                }
-            })
-            user.save();
-        }
-    });
-   
     app.listen(3000);
 })
 .catch(err => console.log(err));
