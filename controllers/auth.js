@@ -1,7 +1,17 @@
-const User = require('../models/user');
 const  connection  = require('mongoose');
 const bcrypt = require('bcryptjs');
+const nodemailer = require('nodemailer');
+const sendgridTransport = require('nodemailer-sendgrid-transport');
+const User = require('../models/user');
 
+const transporter = nodemailer.createTransport(
+    sendgridTransport({
+      auth: {
+        api_key:
+          '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'
+      }
+    })
+  );
 exports.getLogin = (req,res,next)=> {
     // const isLoggedIn = req.get('Cookie').split('=')[1];
     // console.log(isLoggedIn);
@@ -49,28 +59,34 @@ exports.postSignup =(req, res , next) => {
                 return res.redirect('/signup'); //already exists user
             }
            
-                return bcrypt.hash(password,12)
-                .then(hashPassword => {
-                    const user= new User ({
-                    email:email,
-                    password:hashPassword,
-                    cart: {
-                        items:[],
-                        // quantity:0
-                    }
-    
-                });
-                return user.save();
+            return bcrypt
+            .hash(password, 12)
+            .then(hashedPassword => {
+              const user = new User({
+                email: email,
+                password: hashedPassword,
+                cart: { items: [] }
+              });
+              return user.save();
             })
             .then(result => {
-                res.redirect('/login');
-            }).catch(err => console.log(err));
-              
-           
+              res.redirect('/login');
+              console.log("Sending Mails");
+              return transporter.sendMail({
+                  
+                to: email,
+                from: 'helloashutoshoo7@gmail.com',
+                subject: 'Signup succeeded!',
+                html: '<h1>You successfully signed up!</h1>'
+              });
+            })
+            .catch(err => {
+              console.log(err);
+            });
         })
-       
-        .catch(err => console.log(err));
-
+        .catch(err => {
+          console.log(err);
+        });
         
         
 }
