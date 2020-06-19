@@ -21,7 +21,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 
 const app = express();  //making app as express object
 const csrfProtection = csrf();
-const MONGODB_URI ='mongodb+srv://admin:1416root@cluster0-dftyh.mongodb.net/shop?retryWrites=true&w=majority';
+const MONGODB_URI ='Mongodb_uri';
 
 const store= new MongoDBStore({
     uri:MONGODB_URI,
