@@ -19,3 +19,6 @@ Setup MonngoDB connection URI in app.js and set up sendgrid api key in auth.js c
   $ git push heroku master
   $ heroku open
 ```
+
+
+$ git rm --cached FILENAME or foldername how to untrack any previous tracked files.
