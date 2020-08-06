@@ -19,7 +19,14 @@ const orderSchema = new Schema({
       required: true,
       ref: 'User'
     }
-  }
+  },
+  total:{
+    type:Number
+  },
+  date: {
+        type: Date,
+        default: Date.now
+      }
 });
 
 module.exports = mongoose.model('Order', orderSchema);

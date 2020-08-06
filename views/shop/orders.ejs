@@ -5,13 +5,17 @@
             <% if (orders.length <= 0) { %>
                 <h1>Nothing there!</h1>
              <% } else { %>
-                <ul class="orders">
+               
+    
                     <% orders.forEach(order => { %>
+                      
                         <li class="orders__item">
-                           <h3>Order - # <%= order._id %></h3>
+                           <h3>Order Number - # <%= order.total %>  - Date :<%= order.date.getDate()+"/"+order.date.getMonth()+"/"+order.date.getYear() %> </h3>
                             <ul class="orders__products">
                                 <% order.products.forEach(p => { %>
-                                    <li class="orders__products-item"><%= p.product.title %> (<%= p.quantity %>)</li>
+                                    
+                                    <img src="<%= p.product.imageUrl %>" alt="<%= p.product.title %>">
+                                    <h3><b><li class="orders__products-item"><%= p.product.title %> (Quantity=<%= p.quantity %>)</li></b></h3>
                                 <% }); %>
                             </ul>
                         </li>

@@ -1,9 +1,17 @@
 
     <nav class="navbar navbar-expand-md navHead navItem navbar-dark bg-dark">
         <div>
-            <a class="navbar-brand " href="/">
-                Gravity Store
-            </a>
+            <% if(isAuthenticated) { %>
+                <a class="navbar-brand " href="/home"">
+                    Gravity Store
+                </a>
+                <% }else{ %>
+                    <a class="navbar-brand " href="/"">
+                        Gravity Store
+                    </a>
+                    <% } %>
+
+            
         </div>
        
         

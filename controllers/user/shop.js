@@ -1,5 +1,6 @@
 const Product = require('../../models/Product');
 const User = require('../../models/User');
+const Order = require('../../models/Order');
 
 exports.getHome =(req,res,next)=> {
     Product.find()
@@ -46,7 +47,6 @@ exports.postCart = (req,res,next) => {
 const id = req.body.productId;
 Product.findById(id)
 .then(product => {
-    console.log(req.user);
     return req.user.addToCart(product);
 })
 .then(result => {
@@ -70,49 +70,55 @@ req.user
 };
 
 
-// exports.getOrders = (req,res,next) => {
-// Order.find({"user.userId":req.user._id})
-// .then(orders=> {
-//     res.render('shop/orders',{
-//         pageTitle:'Your Orders',
-//         orders:orders,
-//         isAuthenticated: req.session.isLoggedIn
-// });
-// })
-// .catch(err=> console.log(err));
+exports.getOrders = (req,res,next) => {
+Order.find({"user.userId":req.user._id})
+.then(orders=> {
+    
+    res.render('shop/orders',{
+        pageTitle:'Your Orders',
+        orders:orders,
+        
+});
+})
+.catch(err=> console.log(err));
 
 
-// }
+}
 
-// exports.postOrder=(req,res,next)=> {
-// req.user
-// .populate('cart.items.productId')
-// .execPopulate()
-// .then(user=> {
-//     const products= user.cart.items.map(i => {
-//         return {quantity: i.quantity, product:{ ...i.productId._doc}} ;
-//     });
-//     const order = new Order({
-//    user: {
-//        email:req.user.email,
-//        userId:req.user,
-//    },
-//    products: products
-// });
-// return  order.save();
+exports.postOrder=(req,res,next)=> {
+req.user
+.populate('cart.items.productId')
+.execPopulate()
+.then(user=> {
+    const products= user.cart.items.map(i => {
+        return {quantity: i.quantity, product:{ ...i.productId._doc}} ;
+    });
+   
+   Order.countDocuments({},(err,count)=>{
+    const order = new Order({
+        user: {
+            email:req.user.email,
+            userId:req.user,
+        },
+        products: products,
+        total:count+1
+     });
+     return  order.save();
+   });
+    
 
-// })
-// .then(result => {
-//    console.log(result);
-//    return req.user.clearCart();
-// })
-// .then(result => {
-//    res.redirect('/orders');
-// })
-// .catch(err => console.log(err));
+})
+.then(result => {
+   console.log(result);
+   return req.user.clearCart();
+})
+.then(result => {
+   res.redirect('/orders');
+})
+.catch(err => console.log(err));
 
 
-// };
+};
 
 
 

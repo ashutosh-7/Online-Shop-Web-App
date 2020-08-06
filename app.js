@@ -89,13 +89,18 @@ app.use(
   );
   //to store user object, because in req.session.user we have only data not have full object that's why we can't use this with models methods like add to cart
 app.use((req,res,next)=>{
+  if(req.session.user){
   User.findById(req.session.user._id)
   .then(user=>{
-    console.log("Reg user set");
     req.user=user;
     next();
   }).catch(err=>console.log(err));
-  
+}
+else
+{
+  next();
+}
+
 });
 
   app.use(csrfProtection);
