@@ -75,7 +75,7 @@ exports.postRegister =(req,res,next)=> {
             }
             else
             {
-                const cart=[];
+                const cart={};
                 const newUser= new User({   //instance of the user model
                     name,
                     email,

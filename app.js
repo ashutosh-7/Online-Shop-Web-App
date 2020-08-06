@@ -16,6 +16,7 @@ const adminAuthRoutes= require('./routes/admin/adminAuth');
 const userAuthRoutes= require('./routes/user/userAuth');
 const shopRoutes= require('./routes/user/shop');
 const Admin= require('./models/Admin');
+const User = require('./models/User.js');
 
 const app=express();
 const csrfProtection = csrf();
@@ -86,6 +87,16 @@ app.use(
       
     })
   );
+  //to store user object, because in req.session.user we have only data not have full object that's why we can't use this with models methods like add to cart
+app.use((req,res,next)=>{
+  User.findById(req.session.user._id)
+  .then(user=>{
+    console.log("Reg user set");
+    req.user=user;
+    next();
+  }).catch(err=>console.log(err));
+  
+});
 
   app.use(csrfProtection);
   app.use(flash());

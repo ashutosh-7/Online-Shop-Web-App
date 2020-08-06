@@ -40,7 +40,7 @@ exports.postLogin = (req, res, next) => {
               return req.session.save(err => {
                 console.log(err);
                 console.log(req.session.user);
-                res.send("dkjsfh");
+                res.redirect('/admin/home');
               });
             }
             req.flash('error_msg','Wrong Password.');

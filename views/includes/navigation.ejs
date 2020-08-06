@@ -5,6 +5,9 @@
                 Gravity Store
             </a>
         </div>
+       
+        
+    
         <!-- Navbar Collapse -->
         <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarToggle"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,9 +17,17 @@
             <ul class="navbar-nav ml-lg-auto">
               
                 <li class="nav-item">
-                    <a class="nav-link smoothScroll" style="color: rgb(255, 255, 255);" href="/home">Shop</a>
+                    <a class="nav-link smoothScroll" style="color: rgb(255, 255, 255);" href="/admin/home">Shop</a>
                 </li>
-                
+               <% if(isAdmin) { %>
+                <li class="nav-item">
+                    <form action="/admin/logout" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="btn" type="submit">Logout</button>
+                    </form>
+                </li>
+                <% }else {%> 
+
                 <% if(isAuthenticated) { %>
                 <li class="nav-item">
                     <a class="nav-link smoothScroll" style="color: #fafeff;" href="/cart">Cart</a>
@@ -40,6 +51,7 @@
                     <a class="nav-link smoothScroll" style="color: #fafeff;" href="/register">Sign Up</a>
                 </li> 
                 <% } %>
+                <%} %>
             </ul>
            
         </div>
