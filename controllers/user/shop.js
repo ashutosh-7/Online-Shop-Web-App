@@ -14,7 +14,7 @@ exports.getHome =(req,res,next)=> {
     })
     .catch((err) =>{//console.log(err)
         req.flash('error_msg','Something wrong happend.');
-        req.redirect('/home');
+        res.redirect('/home');
         });
     
 }; 
@@ -29,7 +29,7 @@ exports.getProduct = (req,res,next ) => {
     })
     .catch((err) =>{//console.log(err)
         req.flash('error_msg','Something wrong happend.');
-        req.redirect('/home');
+        res.redirect('/home');
         });
 }
 
@@ -47,7 +47,7 @@ exports.getCart = (req,res,next) => {
         })
         .catch((err) =>{//console.log(err)
             req.flash('error_msg','Something wrong happend.');
-            req.redirect('/home');
+            res.redirect('/home');
             });
 }
 
@@ -63,7 +63,7 @@ Product.findById(id)
 })
 .catch((err) =>{//console.log(err)
     req.flash('error_msg','Something wrong happend.');
-    req.redirect('/home');
+    res.redirect('/home');
     });
 };
 
@@ -78,7 +78,7 @@ req.user
 })
 .catch((err) =>{//console.log(err)
     req.flash('error_msg','Something wrong happend.');
-    req.redirect('/home');
+    res.redirect('/home');
     });
 
 };
@@ -96,7 +96,7 @@ Order.find({"user.userId":req.user._id})
 })
 .catch((err) =>{//console.log(err)
     req.flash('error_msg','Something wrong happend.');
-    req.redirect('/home');
+    res.redirect('/home');
     });
 
 
@@ -133,7 +133,7 @@ req.user
 })
 .catch((err) =>{//console.log(err)
     req.flash('error_msg','Something wrong happend.');
-    req.redirect('/home');
+    res.redirect('/home');
     });
 
 

@@ -6,6 +6,8 @@ const isCheck= require('../../middlewares/admin/isCheck');
 
 router.get('/admin/login',isCheck,authController.getLogin);
 router.post('/admin/login',isCheck,authController.postLogin);
+router.get('/admin/register',isCheck,authController.getRegister);
+router.post('/admin/register',isCheck,authController.postRegister);
 router.post('/admin/logout',isAuth,authController.postLogout);
 
 

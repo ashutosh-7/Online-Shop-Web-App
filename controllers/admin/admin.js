@@ -53,7 +53,7 @@ exports.postAddProducts = (req,res,next) => {
     .catch((err) =>{
         // console.log(err)
         req.flash('error_msg','Something wrong happende.');
-        req.redirect('/admin/home');
+        res.redirect('/admin/home');
         });
    
     };
@@ -85,7 +85,7 @@ exports.postAddProducts = (req,res,next) => {
         .catch((err) =>{
             // console.log(err)
             req.flash('error_msg','Something wrong happende.');
-            req.redirect('/admin/home');
+            res.redirect('/admin/home');
             });
         
             
@@ -114,7 +114,7 @@ exports.postAddProducts = (req,res,next) => {
         .catch((err) =>{
             // console.log(err)
         req.flash('error_msg','Something wrong happend.');
-        req.redirect('/admin/home');
+        res.redirect('/admin/home');
         });
         
     }
@@ -133,7 +133,7 @@ exports.postAddProducts = (req,res,next) => {
             .catch((err) =>{
                 // console.log(err)
                 req.flash('error_msg','Something wrong happend.');
-                req.redirect('/admin/home');
+                res.redirect('/admin/home');
                 });
             
     }
@@ -148,7 +148,7 @@ exports.postAddProducts = (req,res,next) => {
         .catch((err) =>{
             // console.log(err)
             req.flash('error_msg','Something wrong happend.');
-            req.redirect('/admin/home');
+            res.redirect('/admin/home');
             });
         
     }

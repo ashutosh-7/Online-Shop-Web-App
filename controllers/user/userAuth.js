@@ -98,7 +98,7 @@ exports.postRegister =(req,res,next)=> {
                         })
                         .catch((err) =>{//console.log(err)
                             req.flash('error_msg','Something wrong happend.');
-                            req.redirect('/home');
+                            res.redirect('/home');
                             });
                     })
                 });
@@ -106,7 +106,7 @@ exports.postRegister =(req,res,next)=> {
         })
         .catch((err) =>{//console.log(err)
             req.flash('error_msg','Something wrong happend.');
-            req.redirect('/home');
+            res.redirect('/home');
             });
     }
 
@@ -148,7 +148,7 @@ exports.postLogin = (req, res, next) => {
       })
       .catch((err) =>{//console.log(err)
         req.flash('error_msg','Something wrong happend.');
-        req.redirect('/home');
+        res.redirect('/home');
         });
 
   };

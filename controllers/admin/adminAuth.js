@@ -5,17 +5,100 @@ const Admin = require('../../models/Admin');
 
 exports.getLogin =(req,res,next)=> {
         
-        if(req.session.isAdminLoggedIn)
-        {
-            res.render('admin/home',{
-                pageTitle:'Home',
-            });
-        }
+      
         res.render('admin/login',{
         pageTitle:'Login',
     });
 
 }; 
+
+exports.getRegister =(req,res,next)=> {
+  res.render('admin/register',{
+    pageTitle:'Register',
+});
+  
+}; 
+exports.postRegister =(req,res,next)=> {
+  const email=req.body.email;
+  const password=req.body.password;
+ 
+  let errors =[];
+  if( !email || !password)
+  {
+      errors.push({msg:"Please fill all the fields."});
+  }
+
+  if(password.length<5)
+  {
+      errors.push({msg:'Passwords should be atleast 6 characters'});
+  }
+
+  if(errors.length>0)
+  {
+      res.render('admin/register',{
+          pageTitle:'Register',
+          errors,
+          email,
+          password,
+          
+
+      });
+  }
+  else
+  {            
+      Admin.findOne({username:email})
+      .then(user=>{
+          if(user)
+          {
+            
+                  errors.push({msg:'Admin is already resisterd with this email.'});
+                  res.render('admin/register',{
+                  pageTitle:'Register',
+                  errors,
+                  email,
+                  password,
+              });
+          }
+          else
+          {
+              const newAdmin= new Admin({   //instance of the user model
+                  username:email,
+                  password:password
+              });
+              
+              //hasing password and saving user in database
+              bcrypt.genSalt(10,(err,salt)=>{
+                  bcrypt.hash(newAdmin.password,salt,(err,hash)=> {
+                      if(err)
+                      throw err;
+
+                      newAdmin.password=hash;
+                      
+                      newAdmin.save()
+                      .then(user => {
+                        
+                          req.flash('success_msg','You are registered Successfully!');
+                          res.redirect('/admin/login');
+                      })
+                      .catch((err) =>{//console.log(err)
+                        req.flash('error_msg','Something wrong happend.');
+                        res.redirect('/admin/home');
+                        });
+                  })
+              });
+          }
+      })
+      .catch((err) =>{//console.log(err)
+        req.flash('error_msg','Something wrong happend.');
+        res.redirect('/admin/home');
+        });
+  }
+
+  
+  
+  
+}; 
+
 
 
 
@@ -53,7 +136,7 @@ exports.postLogin = (req, res, next) => {
       })
       .catch((err) =>{//console.log(err)
         req.flash('error_msg','Something wrong happend.');
-        req.redirect('/admin/home');
+        res.redirect('/admin/home');
         });
    
   

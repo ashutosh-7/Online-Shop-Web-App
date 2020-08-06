@@ -30,9 +30,7 @@
         <div class="collapse navbar-collapse justify-content-end navItem " id="navbarToggle">
             <ul class="navbar-nav ml-lg-auto">
               
-                <li class="nav-item">
-                    <a class="nav-link smoothScroll" style="color: rgb(255, 255, 255);" href="/home">Shop</a>
-                </li>
+                
                <% if(isAdmin) { %>
                 <li class="nav-item">
                     <form action="/admin/logout" method="POST">
@@ -65,7 +63,10 @@
                     <a class="nav-link smoothScroll" style="color: #fafeff;" href="/register">Sign Up</a>
                 </li> 
                 <li class="nav-item">
-                    <a class="nav-link smoothScroll" style="color: #fafeff;" href="/admin/login">Admin Login</a>
+                   <b> <a class="nav-link smoothScroll" style="color: #95f554;" href="/admin/login">Admin-Login</a></b>
+                </li> 
+                <li class="nav-item">
+                    <b><a class="nav-link smoothScroll" style="color:#95f554;" href="/admin/register">Dummy-Admin-Register</a></b>
                 </li> 
                 <% } %>
                 <%} %>
