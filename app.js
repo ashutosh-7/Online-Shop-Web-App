@@ -119,8 +119,8 @@ app.use(function(req, res, next) {
   //creating dummy admin
 
   // app.use('/admin/register',(req,res,next)=> {
-  //   const username="Denied";
-  //   const password="123";
+  //   const username="accesss_denied";
+  //   const password="gravity";
   //   const newAdmin =new Admin({
   //     username,
   //     password

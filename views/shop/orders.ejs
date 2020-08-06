@@ -14,7 +14,7 @@
                             <ul class="orders__products">
                                 <% order.products.forEach(p => { %>
                                     
-                                    <img src="<%= p.product.imageUrl %>" alt="<%= p.product.title %>">
+                                    <img src="<%= p.product.imageUrl %>" class="img-thumbnail" width="260" height="240" alt="<%= p.product.title %>">
                                     <h3><b><li class="orders__products-item"><%= p.product.title %> (Quantity=<%= p.quantity %>)</li></b></h3>
                                 <% }); %>
                             </ul>

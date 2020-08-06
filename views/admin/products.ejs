@@ -17,26 +17,27 @@
 
     </div>
    
-        <div class="grid" >
+        <div class="card-columns" >
             <% for (let x of product) { %>
             <article class="card product-item" >
                 <header class="card__header">
                     <h1 class="product__title"><b><%= x.title %></b></h1>
                 </header>
                 <div class="card__image">
-                    <img src="<%= x.imageUrl %>" alt="<%= x.title %>">
+                   
+                    <img src="/<%= x.imageUrl %>" class="img-thumbnail" alt="<%= x.title %>">
                 </div>
                 <div class="card__content">
-                    <h2 class="product__price"><b>$<%= x.price %></b></h2>
-                    <p class="product__description">!<%= x.description %></p>
+                    <h2 class="product__price"><b>₹<%= x.price %></b></h2>
+                    <p class="product__description"><%= x.description %></p>
                 </div>
                 <div class="card__actions">
-                    <a href="edit-product/<%= x._id %>?edit=true" ><button class="btn">Edit Product</button></a>
+                    <a href="edit-product/<%= x._id %>?edit=true" ><button class="btn btn-warning">Edit Product</button></a>
                     <br>
                        <form action="/admin/delete-product" method="POST">
                       
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">  <input type="hidden"  name="productId" value="<%= x._id %>"  >
-                     <button class="btn" type="submit">Delete Product</button>
+                     <button class="btn btn-danger" type="submit">Delete Product</button>
                         
                     </form>
                 </div>

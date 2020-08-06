@@ -26,6 +26,11 @@ exports.postAddProducts = (req,res,next) => {
     const isAuthenticated= req.session.isLoggedIn
     const image = req.file;
     const imageUrl= image.path;
+   if(isNaN(price))
+   {
+    req.flash('error_msg','Price must be numeric.');
+    res.redirect('/admin/add-product');
+   }
     const product= new Product({
         title:title,
         description:description,
@@ -77,7 +82,9 @@ exports.postAddProducts = (req,res,next) => {
         const title = req.body.title;
         const description = req.body.description;
         const price = req.body.price;
-        const imageUrl = req.body.imageUrl;
+        const image = req.file;
+        const imageUrl= image.path;
+        
         Product.findById(id)
         .then(product=> {
             product.title=title;
@@ -96,17 +103,16 @@ exports.postAddProducts = (req,res,next) => {
     
     exports.getProducts = (req,res,next) => {
             Product.find()
-            // .select('title price -id')
-            // .populate('userId ', 'name') //es user id se jo related data hai wo sb aa jayenge
             .then(products => {
                     res.render('admin/products',{
                     product:products,
                     pageTitle:'Admin Products',
-                    isAuthenticated: req.session.isLoggedIn
+                    
                   
                 });
             })
             .catch(err => console.log(err));
+            
     }
     
     exports.postDeleteProduct= (req,res,next) => {

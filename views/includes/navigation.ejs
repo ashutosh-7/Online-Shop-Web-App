@@ -2,14 +2,20 @@
     <nav class="navbar navbar-expand-md navHead navItem navbar-dark bg-dark">
         <div>
             <% if(isAuthenticated) { %>
-                <a class="navbar-brand " href="/home"">
+                <a class="navbar-brand " href="/home">
                     Gravity Store
                 </a>
-                <% }else{ %>
-                    <a class="navbar-brand " href="/"">
+                <% }else if(!isAdmin){ %>
+                    <a class="navbar-brand " href="/">
                         Gravity Store
                     </a>
                     <% } %>
+                    <%if(isAdmin) {%>
+                        <a class="navbar-brand " href="/admin/home">
+                            Gravity Store
+                        </a>
+                        <% } %>
+
 
             
         </div>
@@ -25,7 +31,7 @@
             <ul class="navbar-nav ml-lg-auto">
               
                 <li class="nav-item">
-                    <a class="nav-link smoothScroll" style="color: rgb(255, 255, 255);" href="/admin/home">Shop</a>
+                    <a class="nav-link smoothScroll" style="color: rgb(255, 255, 255);" href="/home">Shop</a>
                 </li>
                <% if(isAdmin) { %>
                 <li class="nav-item">
