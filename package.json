@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -17,9 +17,7 @@
     "url": "https://github.com/ashutosh-7/NodeJs/issues"
   },
   "homepage": "https://github.com/ashutosh-7/NodeJs#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  },
+  "devDependencies": {},
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
