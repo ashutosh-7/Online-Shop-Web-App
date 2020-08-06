@@ -3,15 +3,17 @@
 
     <%- include('../includes/navigation.ejs') %>
 
-    <section class="feature">
-        <div class="container form1">
+    <section class="d-xl-inline-flex ">
+        <div class="container ">
             <div class="row">
 
-                <form action="/admin/<% if(editing) { %>edit-product<% } else { %>add-product <% } %>" method="POST">
-                    <div class="form-group">
-                        <h3><label><% if(editing) { %>Edit Product <% } else { %>  Add Product <% } %></label></h3>
+                <form class="form-control-lg " action="/admin/<% if(editing) { %>edit-product<% } else { %>add-product <% } %>" method="POST">
+                    <div class="form-row align-items-center  "></div>
+                    <div class="form-row align-items-center  ">
+                        <h3><label style="align-content: center;"><% if(editing) { %>Edit Product <% } else { %>  Add Product <% } %></label></h3>
                         <input type="text" class="form-control" name="title" placeholder="Product Name" value="<% if(editing) { %><%= product.title %> <% } %>">
                     </div>
+                    
                     <div class="form-group">
                         <h3><label>Image Url </label></h3>
                         <input type="text" class="form-control" name="imageUrl" placeholder="Image Url" value="<% if(editing) { %><%= product.imageUrl %> <% } %>">
