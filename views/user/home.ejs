@@ -2,14 +2,25 @@
 <body>
 
     <%- include('../includes/navigation.ejs') %>
-   
+    
+    <div class="container">
+        <div class="row">
+            <div>
+               
+                <h2>Welcome <%=name%> :)</h2>
+                <br>
+            </div>
+           
+
+        </div>
     
   <% if(product.length>0) {%>
     <div class="container">
         <div class="row">
             <div>
-                <h1>My Products!</h1>
-                <p>List of all the available products.</p>
+               
+                <h5>List of all the available products.</h5>
+                <br>
             </div>
            
 
@@ -17,7 +28,7 @@
 
     </div>
    
-        <div class="grid" >
+        <div class="card-columns" >
             <% for (let x of product) { %>
             <article class="card product-item" >
                 <header class="card__header">
@@ -27,15 +38,13 @@
                     <img src="<%= x.imageUrl %>" alt="<%= x.title %>">
                 </div>
                 <div class="card__content">
-                    <h2 class="product__price"><b>$<%= x.price %></b></h2>
-                    <p class="product__description">!<%= x.description %></p>
+                    <h2 class="product__price"><b>₹<%= x.price %></b></h2>
+                    <p class="product__description"><%= x.description %></p>
                 </div>
                 <div class="card__actions">
                     <a href="/products/<%= x._id %>" class="btn" >Product Details</a>
-                    <% if(isAuthenticated) { %>
-                        <%- include('../includes/addToCart.ejs',{product:x._id}) %>
-                    <% } %>
-                </div>
+                    
+                    
             </article>
            
             <%} %>
@@ -43,7 +52,7 @@
        
     <% } else {%>
        
-        <h1>Sorry ...No products Available!</h1>
+        <h1>Sorry ...No Orders Available!</h1>
         <% }%>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

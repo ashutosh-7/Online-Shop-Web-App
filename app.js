@@ -13,6 +13,8 @@ const bcrypt = require('bcryptjs');
 const indexRoutes= require('./routes/index');
 const adminRoutes= require('./routes/admin/admin');
 const adminAuthRoutes= require('./routes/admin/adminAuth');
+const userAuthRoutes= require('./routes/user/userAuth');
+const shopRoutes= require('./routes/user/shop');
 const Admin= require('./models/Admin');
 
 const app=express();
@@ -94,8 +96,7 @@ app.use(function(req, res, next) {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
-    res.locals.isAuthenticated = req.session.isLoggedIn;
-    res.locals.isTeacher = req.session.isTeacherLoggedIn;
+    res.locals.isAuthenticated = req.session.isUserLoggedIn;
     res.locals.isAdmin = req.session.isAdminLoggedIn;
     res.locals.csrfToken = req.csrfToken();
     next();
@@ -135,6 +136,8 @@ app.use(function(req, res, next) {
 app.use(adminAuthRoutes);
 app.use(adminRoutes);
 app.use(indexRoutes);
+app.use(userAuthRoutes);
+app.use(shopRoutes);
 app.use(errorControllers.get404);
 
 app.listen(process.env.PORT || 3000);

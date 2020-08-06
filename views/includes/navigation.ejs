@@ -14,11 +14,9 @@
             <ul class="navbar-nav ml-lg-auto">
               
                 <li class="nav-item">
-                    <a class="nav-link smoothScroll" style="color: rgb(255, 255, 255);" href="/">Shop</a>
+                    <a class="nav-link smoothScroll" style="color: rgb(255, 255, 255);" href="/home">Shop</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link smoothScroll" style="color: #fafeff;" href="/products">Products</a>
-                </li>
+                
                 <% if(isAuthenticated) { %>
                 <li class="nav-item">
                     <a class="nav-link smoothScroll" style="color: #fafeff;" href="/cart">Cart</a>
@@ -27,12 +25,7 @@
                     <a class="nav-link smoothScroll" style="color: #fafeff;" href="/orders">Your Orders</a>
                 </li>
              
-                <li class="nav-item">
-                    <a class="nav-link smoothScroll" style="color: #fafeff;" href="/admin/add-product">Add Product</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link smoothScroll" style="color: #fafeff;" href="/admin/products">Admin Product</a>
-                </li>
+                
                 <li class="nav-item">
                     <form action="/logout" method="POST">
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
@@ -44,7 +37,7 @@
                     <a class="nav-link smoothScroll" style="color: #fafeff;" href="/login">Login</a>
                 </li> 
                 <li class="nav-item">
-                    <a class="nav-link smoothScroll" style="color: #fafeff;" href="/signup">Sign Up</a>
+                    <a class="nav-link smoothScroll" style="color: #fafeff;" href="/register">Sign Up</a>
                 </li> 
                 <% } %>
             </ul>

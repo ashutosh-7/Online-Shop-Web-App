@@ -9,8 +9,9 @@
     <div class="container">
         <div class="row">
             <div>
-                <h1>My Orders!</h1>
-                <p>List of all the available products.</p>
+               
+                <h3>List of all the available products.</h3>
+                <br>
             </div>
            
 
@@ -18,7 +19,7 @@
 
     </div>
    
-        <div class="grid" >
+        <div class="card-columns" >
             <% for (let x of product) { %>
             <article class="card product-item" >
                 <header class="card__header">
@@ -28,8 +29,8 @@
                     <img src="<%= x.imageUrl %>" alt="<%= x.title %>">
                 </div>
                 <div class="card__content">
-                    <h2 class="product__price"><b>$<%= x.price %></b></h2>
-                    <p class="product__description">!<%= x.description %></p>
+                    <h2 class="product__price"><b>₹<%= x.price %></b></h2>
+                    <p class="product__description"><%= x.description %></p>
                 </div>
                 <div class="card__actions">
                     <a href="/products/<%= x._id %>" class="btn" >Product Details</a>
