@@ -27,11 +27,7 @@ $ git rm --cached FILENAME or foldername how to untrack any previous tracked fil
 heroku logs --app app_name -> how to check logs on heroku 
 Remember about Procfile and nodemon error while deploying on heroku.
 
-<img src=“https://raw.githubusercontent.com/ashutosh-7/Online-Shop-Web-App/master/images/Screenshot%20from%202020-08-07%2004-24-17.png” raw=true
-alt=“img”>
-<img src=“https://raw.githubusercontent.com/ashutosh-7/Online-Shop-Web-App/master/images/Screenshot%20from%202020-08-07%2004-25-58.png” raw=true
-alt=“img”>
-<img src=“https://raw.githubusercontent.com/ashutosh-7/Online-Shop-Web-App/master/images/Screenshot%20from%202020-08-07%2004-25-15.png" raw=true
-alt=“img”>
-<img src=“https://raw.githubusercontent.com/ashutosh-7/Online-Shop-Web-App/master/images/Screenshot%20from%202020-08-07%2004-26-41.png” raw=true
-alt=“img”>
+<img width="964" alt="java 8 and prio java 8  array review example" src="https://raw.githubusercontent.com/ashutosh-7/Online-Shop-Web-App/master/images/Screenshot%20from%202020-08-07%2004-24-17.png">
+<img width="964" alt="java 8 and prio java 8  array review example" src="https://raw.githubusercontent.com/ashutosh-7/Online-Shop-Web-App/master/images/Screenshot%20from%202020-08-07%2004-25-58.png">
+<img width="964" alt="java 8 and prio java 8  array review example" src="https://raw.githubusercontent.com/ashutosh-7/Online-Shop-Web-App/master/images/Screenshot%20from%202020-08-07%2004-25-15.png">
+<img width="964" alt="java 8 and prio java 8  array review example" src="https://raw.githubusercontent.com/ashutosh-7/Online-Shop-Web-App/master/images/Screenshot%20from%202020-08-07%2004-26-41.png">
