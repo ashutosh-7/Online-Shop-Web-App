@@ -23,8 +23,9 @@ exports.postAddProducts = (req,res,next) => {
     const title = req.body.title;
     const description = req.body.description;
     const price = req.body.price;
-    const imageUrl = req.body.imageUrl;
     const isAuthenticated= req.session.isLoggedIn
+    const image = req.file;
+    const imageUrl= image.path;
     const product= new Product({
         title:title,
         description:description,
@@ -86,7 +87,6 @@ exports.postAddProducts = (req,res,next) => {
             return product.save();
         })
         .then(result => {
-            console.log("Updated product");
             res.redirect('/');
         })
         .catch(err => console.log(err));

@@ -118,7 +118,6 @@ exports.postRegister =(req,res,next)=> {
 exports.postLogin = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
-    console.log(req.session.isLoggedIn);
      User.findOne({ email: email })
       .then(user => {
         if (!user) {
@@ -133,8 +132,6 @@ exports.postLogin = (req, res, next) => {
                 req.session.user = user;
               
               return req.session.save(err => {
-                console.log(err);
-                console.log(req.session.user);
                 res.redirect('/home');
               });
             }

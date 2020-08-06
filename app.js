@@ -33,32 +33,30 @@ mongoose.connect(MONGODB_URI,{useNewUrlParser:true})
 });
 
 
-// const fileStorage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, 'images');
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, new Date().toISOString() + '-' + file.originalname);
-//   }
-// });
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'images');
+  },
+  filename: (req, file, cb) => {
+    cb(null, new Date().toISOString() + '-' + file.originalname);
+  }
+});
 
-// const fileFilter = (req, file, cb) => {
-//   if (
-//     file.mimetype === 'image/png' ||
-//     file.mimetype === 'image/jpg' ||
-//     file.mimetype === 'image/jpeg'||
-//     file.mimetype === 'file/pdf.'
-//   ) {
-//     cb(null, true);
-//   } else {
-//     cb(null, false);
-//     // cb(new Error('I don\'t have a clue!'))
-//   }
-// };
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === 'image/png' ||
+    file.mimetype === 'image/jpg' ||
+    file.mimetype === 'image/jpeg'
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
 
-// app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single('resume'));
+app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single('imageUp'));
 
-// app.use('/images', express.static(path.join(rootDir, 'images')));
+app.use('/images', express.static(path.join(rootDir, 'images')));
 
 
 app.use(bodyParser.json());  //we are dealing with json

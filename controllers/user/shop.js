@@ -50,7 +50,6 @@ Product.findById(id)
     return req.user.addToCart(product);
 })
 .then(result => {
-    console.log(result);
     res.redirect('/cart');
 })
 .catch(err => console.log(err));
@@ -109,7 +108,6 @@ req.user
 
 })
 .then(result => {
-   console.log(result);
    return req.user.clearCart();
 })
 .then(result => {

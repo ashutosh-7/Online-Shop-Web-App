@@ -39,7 +39,6 @@ exports.postLogin = (req, res, next) => {
               
               return req.session.save(err => {
                 console.log(err);
-                console.log(req.session.user);
                 res.redirect('/admin/home');
               });
             }
@@ -58,7 +57,6 @@ exports.postLogin = (req, res, next) => {
  
 
   exports.postLogout = (req, res, next) => {
-    console.log("11Logout");
     req.session.destroy(err => {
       console.log(err);
       res.redirect('/');
