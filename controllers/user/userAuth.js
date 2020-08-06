@@ -96,16 +96,18 @@ exports.postRegister =(req,res,next)=> {
                             req.flash('success_msg','You are registered Successfully!');
                             res.redirect('/login');
                         })
-                        .catch(err=> {
-                            console.log(err);
-                        });
+                        .catch((err) =>{//console.log(err)
+                            req.flash('error_msg','Something wrong happend.');
+                            req.redirect('/home');
+                            });
                     })
                 });
             }
         })
-        .catch(err=>{
-            console.log(err);
-        });
+        .catch((err) =>{//console.log(err)
+            req.flash('error_msg','Something wrong happend.');
+            req.redirect('/home');
+            });
     }
 
     
@@ -139,19 +141,22 @@ exports.postLogin = (req, res, next) => {
             res.redirect('/login');
           })
           .catch(err => {
-            console.log(err);
+            //console.log(err);
             req.flash('error_msg','Something wrong happened , please retry again.');
             res.redirect('/login');
           });
       })
-      .catch(err => console.log(err));
+      .catch((err) =>{//console.log(err)
+        req.flash('error_msg','Something wrong happend.');
+        req.redirect('/home');
+        });
 
   };
   
 
   exports.postLogout = (req, res, next) => {
     req.session.destroy(err => {
-      console.log(err);
+      //console.log(err);
       res.redirect('/');
     });
   };

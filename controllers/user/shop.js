@@ -12,7 +12,10 @@ exports.getHome =(req,res,next)=> {
             
         });
     })
-    .catch(err => console.log(err));
+    .catch((err) =>{//console.log(err)
+        req.flash('error_msg','Something wrong happend.');
+        req.redirect('/home');
+        });
     
 }; 
 exports.getProduct = (req,res,next ) => {
@@ -24,7 +27,10 @@ exports.getProduct = (req,res,next ) => {
             pageTitle:'Product details',
             });
     })
-    .catch(err => console.log(err));
+    .catch((err) =>{//console.log(err)
+        req.flash('error_msg','Something wrong happend.');
+        req.redirect('/home');
+        });
 }
 
 exports.getCart = (req,res,next) => {
@@ -39,7 +45,10 @@ exports.getCart = (req,res,next) => {
             pageTitle:'Your Cart',
             });
         })
-    .catch(err => console.log(err));
+        .catch((err) =>{//console.log(err)
+            req.flash('error_msg','Something wrong happend.');
+            req.redirect('/home');
+            });
 }
 
 exports.postCart = (req,res,next) => {
@@ -52,7 +61,10 @@ Product.findById(id)
 .then(result => {
     res.redirect('/cart');
 })
-.catch(err => console.log(err));
+.catch((err) =>{//console.log(err)
+    req.flash('error_msg','Something wrong happend.');
+    req.redirect('/home');
+    });
 };
 
 exports.postCartDeleteItem = (req,res,next ) => {
@@ -64,7 +76,10 @@ req.user
     // console.log("deleted");
     res.redirect('/cart');
 })
-.catch(err=> console.log(err));
+.catch((err) =>{//console.log(err)
+    req.flash('error_msg','Something wrong happend.');
+    req.redirect('/home');
+    });
 
 };
 
@@ -79,7 +94,10 @@ Order.find({"user.userId":req.user._id})
         
 });
 })
-.catch(err=> console.log(err));
+.catch((err) =>{//console.log(err)
+    req.flash('error_msg','Something wrong happend.');
+    req.redirect('/home');
+    });
 
 
 }
@@ -113,7 +131,10 @@ req.user
 .then(result => {
    res.redirect('/orders');
 })
-.catch(err => console.log(err));
+.catch((err) =>{//console.log(err)
+    req.flash('error_msg','Something wrong happend.');
+    req.redirect('/home');
+    });
 
 
 };

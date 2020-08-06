@@ -11,6 +11,9 @@ exports.getIndex = (req,res,next) => {
             pageTitle:'Index',
         });
     })
-    .catch(err => console.log(err));
+    .catch((err) =>{//console.log(err)
+        req.flash('error_msg','Something wrong happend.');
+        req.redirect('/home');
+        });
 
 }

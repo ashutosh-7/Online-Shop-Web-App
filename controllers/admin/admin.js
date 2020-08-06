@@ -25,12 +25,18 @@ exports.postAddProducts = (req,res,next) => {
     const price = req.body.price;
     const isAuthenticated= req.session.isLoggedIn
     const image = req.file;
+    if(!image) 
+    {
+     req.flash('error_msg','Image not uploaded successfully or format is not correct.');
+     res.redirect('/admin/add-product');
+    }
     const imageUrl= image.path;
    if(isNaN(price))
    {
     req.flash('error_msg','Price must be numeric.');
     res.redirect('/admin/add-product');
    }
+  
     const product= new Product({
         title:title,
         description:description,
@@ -44,7 +50,11 @@ exports.postAddProducts = (req,res,next) => {
       
         res.redirect('/admin/add-product');
     })
-    .catch(err => console.log(err));
+    .catch((err) =>{
+        // console.log(err)
+        req.flash('error_msg','Something wrong happende.');
+        req.redirect('/admin/home');
+        });
    
     };
 
@@ -55,6 +65,7 @@ exports.postAddProducts = (req,res,next) => {
         {
             return res.redirect('/');
         }
+        req.flash('error_msg','yes');
         const id = req.params.productId;
         Product.findById(id)
         .then(product => {
@@ -71,7 +82,11 @@ exports.postAddProducts = (req,res,next) => {
         
             });
         })
-        .catch(err => console.log(err));
+        .catch((err) =>{
+            // console.log(err)
+            req.flash('error_msg','Something wrong happende.');
+            req.redirect('/admin/home');
+            });
         
             
     }
@@ -96,7 +111,11 @@ exports.postAddProducts = (req,res,next) => {
         .then(result => {
             res.redirect('/');
         })
-        .catch(err => console.log(err));
+        .catch((err) =>{
+            // console.log(err)
+        req.flash('error_msg','Something wrong happend.');
+        req.redirect('/admin/home');
+        });
         
     }
     
@@ -111,7 +130,11 @@ exports.postAddProducts = (req,res,next) => {
                   
                 });
             })
-            .catch(err => console.log(err));
+            .catch((err) =>{
+                // console.log(err)
+                req.flash('error_msg','Something wrong happend.');
+                req.redirect('/admin/home');
+                });
             
     }
     
@@ -122,6 +145,10 @@ exports.postAddProducts = (req,res,next) => {
         .then( ()=> {
             res.redirect('/admin/products');
         })
-        .catch(err => console.log(err));
+        .catch((err) =>{
+            // console.log(err)
+            req.flash('error_msg','Something wrong happend.');
+            req.redirect('/admin/home');
+            });
         
     }

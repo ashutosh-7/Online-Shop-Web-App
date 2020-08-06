@@ -2,6 +2,11 @@
 <body>
 
     <%- include('../includes/navigation.ejs') %>
+    <% if(error_msg !='undefined') {%>
+        <strong>  <%= error_msg %></strong>
+    
+    <% } %>
+    
     <div id="main">
         <div class="fof">
                 <h3>What you want to do as a Admin?</h3>

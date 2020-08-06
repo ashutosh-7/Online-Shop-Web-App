@@ -38,7 +38,7 @@ exports.postLogin = (req, res, next) => {
               req.session.user = user;
               
               return req.session.save(err => {
-                console.log(err);
+                //console.log(err);
                 res.redirect('/admin/home');
               });
             }
@@ -46,19 +46,24 @@ exports.postLogin = (req, res, next) => {
             res.redirect('/admin/login');
           })
           .catch(err => {
-            console.log(err);
+            //console.log(err);
             req.flash('error_msg','Something wrong happened , please retry again.');
             res.redirect('/admin/login');
           });
       })
-      .catch(err => console.log(err));
+      .catch((err) =>{//console.log(err)
+        req.flash('error_msg','Something wrong happend.');
+        req.redirect('/admin/home');
+        });
+   
+  
 
   };
  
 
   exports.postLogout = (req, res, next) => {
     req.session.destroy(err => {
-      console.log(err);
+      //console.log(err);
       res.redirect('/');
     });
   };

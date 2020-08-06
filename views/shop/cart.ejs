@@ -1,6 +1,10 @@
 <%- include('../includes/head.ejs') %>
 <body>
 <%- include('../includes/navigation.ejs') %>
+<% if(error_msg !='undefined') {%>
+    <strong>  <%= error_msg %></strong>
+
+<% } %>
 
     <% if (products.length >0)  { %>
         <h1 class="centered"> Your Products</h1>
