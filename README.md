@@ -1,4 +1,9 @@
-# Live Running on - https://eshop6777.herokuapp.com/
+
+# E - SHOP
+
+Node Js Project. It is a shop portal in which admin can add products, edit products, and any user can save these products in their cart or they can see the product details, as well as they, can also order the product easily. 
+
+### Live Running on - https://eshop6777.herokuapp.com/
 <img width="964" alt="java 8 and prio java 8  array review example" src="https://raw.githubusercontent.com/ashutosh-7/Online-Shop-Web-App/master/images/Screenshot%20from%202020-08-07%2004-24-17.png">
 <img width="964" alt="java 8 and prio java 8  array review example" src="https://raw.githubusercontent.com/ashutosh-7/Online-Shop-Web-App/master/images/Screenshot%20from%202020-08-07%2004-25-58.png">
 <img width="964" alt="java 8 and prio java 8  array review example" src="https://raw.githubusercontent.com/ashutosh-7/Online-Shop-Web-App/master/images/Screenshot%20from%202020-08-07%2004-25-15.png">
